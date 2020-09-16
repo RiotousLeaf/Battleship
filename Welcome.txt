@@ -1,0 +1,6 @@
+Welcome to Battleship!
+
+The rules are simple. First, select the size of your game board.
+Next Guess coordinates on the board until you hit and sink the battleship!
+
+Have fun!
