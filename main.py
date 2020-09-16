@@ -5,9 +5,9 @@ def resetBoard():
     gameBoard = []
 
     for x in range(0, 5):
-        gameBoard.append(['O'])
+        gameBoard.append(['~'])
         for y in range(1, 5):
-            gameBoard[x].append('O')
+            gameBoard[x].append('~')
     return gameBoard
 
 
@@ -16,10 +16,18 @@ gameBoard = resetBoard()
 
 def printBoard():
     for x in range(len(gameBoard)):
-        print(gameBoard[x])
+        print(' '.join(gameBoard[x]))
 
 
 printBoard()
+print('*' * 10)
+
+randomRow = randint(0, len(gameBoard)-1)
+randomCol = randint(0, len(gameBoard)-1)
+gameBoard[randomRow][randomCol] = 'X'
+
+printBoard()
+
 
 # def print_board(board):
 #   for row in board:
