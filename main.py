@@ -1,5 +1,8 @@
 from random import randint
+import time
 
+welcomeMessage = open('Welcome.txt')
+print(welcomeMessage.read())
 
 def setBoard(h, w):
     gameBoard = []
@@ -10,13 +13,16 @@ def setBoard(h, w):
             gameBoard[x].append('~')
     return gameBoard
 
-
-gameBoard = setBoard(10, 10)
+print('Enter the height and width of your board: ')
+height, width = input().split(",")
+gameBoard = setBoard(int(height), int(width))
 
 
 def printBoard():
     for x in range(len(gameBoard)):
         print(' '.join(gameBoard[x]))
+        time.sleep(0.25)
+
 
 
 randomRow = randint(0, len(gameBoard) - 1)
