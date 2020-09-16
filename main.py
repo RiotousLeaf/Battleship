@@ -1,17 +1,17 @@
 from random import randint
 
 
-def resetBoard():
+def setBoard(h, w):
     gameBoard = []
 
-    for x in range(0, 5):
+    for x in range(0, w):
         gameBoard.append(['~'])
-        for y in range(1, 5):
+        for y in range(1, h):
             gameBoard[x].append('~')
     return gameBoard
 
 
-gameBoard = resetBoard()
+gameBoard = setBoard(10, 10)
 
 
 def printBoard():
@@ -19,52 +19,26 @@ def printBoard():
         print(' '.join(gameBoard[x]))
 
 
-printBoard()
-print('*' * 10)
-
-randomRow = randint(0, len(gameBoard)-1)
-randomCol = randint(0, len(gameBoard)-1)
-gameBoard[randomRow][randomCol] = 'X'
+randomRow = randint(0, len(gameBoard) - 1)
+randomCol = randint(0, len(gameBoard) - 1)
+gameBoard[randomRow][randomCol] = '@'
 
 printBoard()
 
+for guesses in range(1, 4):
+    print('Guess the location of the Ship (row, col)')
+    row, col = input().split(",")
 
-# def print_board(board):
-#   for row in board:
-#     print " ".join(row)
-#
-# print_board(board)
-#
-# def random_row(board):
-#   return randint(0, len(board) - 1)
-#
-# def random_col(board):
-#   return randint(0, len(board[0]) - 1)
-#
-# ship_row = random_row(board)
-# ship_col = random_col(board)
-# print ship_row
-# print ship_col
-#
-# # Everything from here on should be in your for loop
-# # don't forget to properly indent!
-# for turn in range(4):
-#   print "Turn", turn + 1
-#   guess_row = int(raw_input("Guess Row: "))
-#   guess_col = int(raw_input("Guess Col: "))
-#
-#   if guess_row == ship_row and guess_col == ship_col:
-#     print "Congratulations! You sank my battleship!"
-#     break
-#   else:
-#     if guess_row not in range(5) or \
-#       guess_col not in range(5):
-#       print "Oops, that's not even in the ocean."
-#     elif board[guess_row][guess_col] == "X":
-#       print( "You guessed that one already." )
-#     else:
-#       print "You missed my battleship!"
-#       board[guess_row][guess_col] = "X"
-#     if (turn == 3):
-#       print "Game Over"
-#     print_board(board)
+    print(row, col)
+
+    if int(row) - 1 == randomRow and int(col) - 1 == randomCol:
+        print('You guessed correctly!')
+        gameBoard[int(row) - 1][int(col) - 1] = '#'
+        printBoard()
+        break
+    else:
+        print('Splash. You missed. Guess again')
+        gameBoard[int(row) - 1][int(col) - 1] = 'X'
+
+    printBoard()
+
