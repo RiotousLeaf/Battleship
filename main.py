@@ -12,7 +12,14 @@ def resetBoard():
 
 
 gameBoard = resetBoard()
-print(gameBoard)
+
+
+def printBoard():
+    for x in range(len(gameBoard)):
+        print(gameBoard[x])
+
+
+printBoard()
 
 # def print_board(board):
 #   for row in board:
